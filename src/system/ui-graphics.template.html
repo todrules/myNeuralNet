@@ -1,0 +1,60 @@
+<div style="width: 100%; height: 100%; position: absolute; top: 0; right: 0; left: 0; z-index: 100; pointer-events: none;">
+  <div fxLayout="row" fxLayoutAlign="start start" style="width: 100%; margin-left: 40px; margin-top: 40px;">
+    <div fxLayout="column" fxLayoutAlign="center start">
+      <div fxLayout="row" fxLayoutAlign="start center">
+
+        <button ion-button ion-icon color="grass" [disabled]="!stop" (click)="playGame()">
+          <ion-icon name="play"></ion-icon> &nbsp;&nbsp;Play
+        </button>
+
+        <button ion-button ion-icon style="margin-left: 20px;" color="success" [disabled]="stop" (click)="stopGame()">
+          <ion-icon name="pause"></ion-icon> &nbsp;&nbsp;Pause
+        </button>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start start">
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <span class="game-text-light" style="text-decoration: underline;">States</span>
+          <span class="game-text-light">Hunger:  </span>
+          <span class="game-text-light">Fatigue:  </span>
+          <span class="game-text-light">Wellness:  </span>
+          <span class="game-text-light">Arousal:  </span>
+          <span class="game-text-light">Contentment:  </span>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start start" style="margin-left: 20px;">
+          <span class="game-text-light" style="text-decoration: underline;">Raw</span>
+          <span class="game-text-grass">{{systemstate?.hunger | number:'1.0-3'}}</span>
+          <span class="game-text-merlot">{{systemstate?.fatigue | number:'1.0-3'}}</span>
+          <span class="game-text-light">{{systemstate?.wellness | number:'1.0-3'}} </span>
+          <span class="game-text-light">{{systemstate?.arousal | number:'1.0-3'}} </span>
+          <span class="game-text-light">{{systemstate?.contentment | number:'1.0-3'}} </span>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <span class="game-text-light" style="text-decoration: underline;">Activation</span>
+          <span class="game-text-light">{{systemstate?.hungerAct | number:'1.0-3'}} </span>
+          <span class="game-text-light">{{systemstate?.fatigueAct | number:'1.0-3'}} </span>
+          <span class="game-text-light">{{systemstate?.wellnessAct | number:'1.0-3'}} </span>
+          <span class="game-text-light">{{systemstate?.arousalAct | number:'1.0-3'}} </span>
+          <span class="game-text-light">{{systemstate?.contentAct | number:'1.0-3'}} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center start">
+    <div style="width: 100%; max-width: 500px; max-height: 200px; height: 100%; background-color: rgba(0,0,0,0.8); min-height: 150px; min-width: 300px; color: #FDFFFC; font-size: 20px; font-family: 'Overpass Mono', monospace; padding: 12px;" id="myinput" #myinput></div>
+  </div>
+</div>
+<div style="width: 100%; height: 100%;" class="invis-scroll" fxLayout="column" fxLayoutAlign="start center">
+  <div style="width: 100%; height: 100%;" fxLayout="row" fxLayoutAlign="center start" class="invis-scroll">
+    <div fxLayout="column" fxLayoutAlign="start center">
+
+      <bot-anima style="width: 100%; height: 100%;">
+
+      </bot-anima>
+
+
+    </div>
+
+
+  </div>
+</div>

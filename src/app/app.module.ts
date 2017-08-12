@@ -3,38 +3,63 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SystemModule } from '../system/system.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MouseListener } from '../system/utils/listeners/mouse.listener';
+import { KeyboardListener } from '../system/utils/listeners/keyboard.listener';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
+import { ChatterBot } from '../pages/bot/bot';
+import { DeepPage } from '../pages/deep/deep';
+import { GamePage } from '../pages/game/game';
+import { DeepModule } from '../system/deep-q/deep.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    GamePage,
+    DeepPage,
+    ChatterBot
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({
+      name: 'chatter_db',
+      driverOrder: ['indexeddb', 'sqlite', 'websql']
+    }),
+    FlexLayoutModule,
+    Ng2GoogleChartsModule,
+    DeepModule,
+    SystemModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    TabsPage,
+    GamePage,
+    DeepPage,
+    ChatterBot
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    KeyboardListener,
+    MouseListener
+  ],
+  exports: [
+    FlexLayoutModule,
+    IonicModule,
+    Ng2GoogleChartsModule,
+    DeepModule
   ]
 })
 export class AppModule {}

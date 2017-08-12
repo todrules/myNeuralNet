@@ -1,29 +1,23 @@
 // Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/theming/
-
+// http://ionicframework.com/docs/v2/theming/
+@import url('https://fonts.googleapis.com/css?family=Iceland|Overpass+Mono|Share+Tech+Mono');
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
-
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-
 @import "ionic.globals";
-
 
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-
-
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
 // Named Color Variables
 // --------------------------------------------------
@@ -34,34 +28,84 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary: (
+    base: #1B263B,
+    contrast: #fff
+  ),
+  secondary: (
+    base: #5BC0EB,
+    contrast: #292F36
+  ),
+  danger: (
+    base: #EF476F,
+    contrast: #fff
+  ),
+  success: (
+    base: #FFFC31,
+    contrast: #292F36
+  ),
+  light: (
+    base: #FDFFFC,
+    contrast: #292F36
+  ),
+  dark: (
+    base: #292F36,
+    contrast: #fff
+  ),
+  blank: (
+    base: #BFC0C0,
+    contrast: #292F36
+  ),
+  sky: (
+    base: #53A2BE,
+    contrast: #fff
+  ),
+  grass: (
+    base: #9BC53D,
+    contrast: #292F36
+  ),
+  merlot: (
+    base: #EF476F,
+    contrast: #fff
+  ),
+  sage: (
+    base: #F4FEC1,
+    contrast: #292F36
+  )
 );
 
-
+$text-color: map_get(map_get($colors, light), base);
+$background-color: map_get(map_get($colors, primary), base);
+$headings-font-weight: 300;
+$font-family-base: "Roboto", "Helvetica Neue", sans-serif;
+$h1-font-size: 2.6em;
+$h2-font-size: 2.4em;
+$h3-font-size: 2.2em;
+$h4-font-size: 2em;
+$h5-font-size: 1.8em;
+$h6-font-size: 1.6em;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
-
+$tabs-ios-tab-font-size: 1em;
+$button-ios-border-radius: 2px;
+$toolbar-ios-height: 74px;
+$text-input-ios-show-focus-highlight: true;
+$loading-ios-spinner-color: map_get(map_get($colors, primary), base);
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
-
+$tabs-md-tab-font-size: 1em;
+$button-md-box-shadow: none;
+$button-md-box-shadow-activated: none;
+$button-md-border-radius: 2px;
+$toolbar-md-height: 74px;
+$text-input-md-show-focus-highlight: true;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
 
 // App Theme
 // --------------------------------------------------
@@ -72,17 +116,425 @@ $colors: (
 
 @import "ionic.theme.default";
 
-
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
-// http://ionicframework.com/docs/ionicons/
+// http://ionicframework.com/docs/v2/ionicons/
 
 @import "ionic.ionicons";
-
 
 // Fonts
 // --------------------------------------------------
 
 @import "roboto";
 @import "noto-sans";
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Roboto Light"), local("Roboto-Light"), url("../assets/fonts/Roboto-Light.ttf") format("truetype"), url("../assets/fonts/roboto-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Roboto"), local("Roboto-Regular"), url("../assets/fonts/Roboto-Light.ttf") format("truetype"), url("../assets/fonts/roboto-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Roboto Medium"), local("Roboto-Medium"), url("../assets/fonts/Roboto-Light.ttf") format("truetype"), url("../assets/fonts/roboto-light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Roboto Bold"), local("Roboto-Bold"), url("../assets/fonts/Roboto-Bold.ttf") format("truetype"), url("../assets/fonts/roboto-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Kanit Bold";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Kanit Bold"), local("Kanit-Bold"), url("../assets/fonts/Kanit-Bold.ttf") format("truetype");
+}
+
+ion-card, ion-card.myCard, .myCard {
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  font-family: Roboto, 'Helvetica Neue', serif;
+  font-weight: 300;
+  background-color: #fff;
+  color: map_get(map_get($colors, dark), base);
+  padding: 5px;
+}
+
+/*==================================================
+ * Effect 1 - Bottom Only
+ * ===============================================*/
+.effect1 {
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+/*==================================================
+ * Effect 2 - Bottom Corners curled up
+ * ===============================================*/
+.effect2 {
+  position: relative;
+}
+
+.effect2:before, .effect2:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+.effect2:after {
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+/*==================================================
+ * Effect 3 - Left Bottom Corner
+ * ===============================================*/
+.effect3 {
+  position: relative;
+}
+
+.effect3:before {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+
+/*==================================================
+ * Effect 4 - Right Bottom Corner
+ * ===============================================*/
+.effect4 {
+  position: relative;
+}
+
+.effect4:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  right: 10px;
+  left: auto;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 15px 10px #777;
+  -moz-box-shadow: 0 15px 10px #777;
+  box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+
+/*==================================================
+ * Effect 5 - Both Bottom Corners - MAXXED
+ * ===============================================*/
+.effect5 {
+  position: relative;
+}
+
+.effect5:before, .effect5:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 25px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  -webkit-box-shadow: 0 35px 20px #777;
+  -moz-box-shadow: 0 35px 20px #777;
+  box-shadow: 0 35px 20px #777;
+  -webkit-transform: rotate(-8deg);
+  -moz-transform: rotate(-8deg);
+  -o-transform: rotate(-8deg);
+  -ms-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+
+.effect5:after {
+  -webkit-transform: rotate(8deg);
+  -moz-transform: rotate(8deg);
+  -o-transform: rotate(8deg);
+  -ms-transform: rotate(8deg);
+  transform: rotate(8deg);
+  right: 10px;
+  left: auto;
+}
+
+/*==================================================
+ * Effect 6 - Slight puffed effect
+ * ===============================================*/
+.effect6 {
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect6:before, .effect6:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  top: 50%;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  -moz-border-radius: 100px / 10px;
+  border-radius: 100px / 10px;
+}
+
+.effect6:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: skew(8deg) rotate(3deg);
+  -moz-transform: skew(8deg) rotate(3deg);
+  -ms-transform: skew(8deg) rotate(3deg);
+  -o-transform: skew(8deg) rotate(3deg);
+  transform: skew(8deg) rotate(3deg);
+}
+
+/*==================================================
+ * Effect 7 - Top and Bottom - Vertical Arch
+ * ===============================================*/
+.effect7 {
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect7:before, .effect7:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  -moz-border-radius: 100px / 10px;
+  border-radius: 100px / 10px;
+}
+
+.effect7:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: skew(8deg) rotate(3deg);
+  -moz-transform: skew(8deg) rotate(3deg);
+  -ms-transform: skew(8deg) rotate(3deg);
+  -o-transform: skew(8deg) rotate(3deg);
+  transform: skew(8deg) rotate(3deg);
+}
+
+/*==================================================
+ * Effect 8 - Left and Right shadows - Horiz Arch
+ * ===============================================*/
+.effect8 {
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect8:before, .effect8:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  -moz-border-radius: 100px / 10px;
+  border-radius: 100px / 10px;
+}
+
+.effect8:after {
+  right: 10px;
+  left: auto;
+  -webkit-transform: skew(8deg) rotate(3deg);
+  -moz-transform: skew(8deg) rotate(3deg);
+  -ms-transform: skew(8deg) rotate(3deg);
+  -o-transform: skew(8deg) rotate(3deg);
+  transform: skew(8deg) rotate(3deg);
+}
+
+button {
+  max-width: 400px;
+  font-weight: 400;
+  padding: 6px 14px;
+  box-shadow: none;
+  border: 1px solid #fbfbfb;
+  border-radius: 4px;
+}
+
+.invis-scroll::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+[padding] h1:first-child,
+[padding] h2:first-child,
+[padding] h3:first-child,
+[padding] h4:first-child,
+[padding] h5:first-child,
+[padding] h6:first-child {
+  margin-top: 1.6rem;
+}
+
+.game-text-light {
+  color: map_get(map_get($colors, light), base);
+  font-size: 18px;
+  margin: 4px;
+}
+
+.game-text-secondary {
+  color: map_get(map_get($colors, secondary), base);
+  font-size: 18px;
+  margin: 4px;
+
+}
+
+.game-text-success {
+  color: map_get(map_get($colors, success), base);
+  font-size: 18px;
+  margin: 4px;
+}
+
+.game-text-danger {
+  color: map_get(map_get($colors, danger), base);
+  font-size: 18px;
+  margin: 4px;
+}
+
+.game-text-sage {
+  color: map_get(map_get($colors, sage), base);
+  font-size: 18px;
+  margin: 4px;
+}
+
+.game-text-grass {
+  color: map_get(map_get($colors, grass), base);
+  font-size: 18px;
+  margin: 4px;
+}
+
+.game-text-merlot {
+  color: map_get(map_get($colors, merlot), base);
+  font-size: 18px;
+  margin: 4px;
+}
+
+.blinking-cursor {
+  font-weight: 300;
+  font-size: 20px;
+  color: map_get(map_get($colors, grass), base);
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: map_get(map_get($colors, grass), base);
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: map_get(map_get($colors, grass), base);
+  }
+}
+
+@-webkit-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: map_get(map_get($colors, grass), base);
+  }
+}
+
+@-ms-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: map_get(map_get($colors, grass), base);
+  }
+}
+
+@-o-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: map_get(map_get($colors, grass), base);
+  }
+}
