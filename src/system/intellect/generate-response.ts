@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 import { AnnotateTextResponse } from '../utils/models';
 
-Injectable()
+@Injectable()
 export class GenerateResponse {
   
   constructor() {

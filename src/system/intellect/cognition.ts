@@ -6,6 +6,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { GenerateResponse } from './generate-response';
+import { Hunger } from '../structural/drives/hunger';
+import { Fatigue } from '../structural/drives/fatigue';
 
 
 @Injectable()
@@ -66,10 +68,15 @@ export class Cognition {
 
   private http: Http;
   private genResponse: GenerateResponse;
+  private hungerService: Hunger;
+  public nourishment;
+  private fatigueService: Fatigue;
   
-  constructor(private aHttp: Http, private generateResponse: GenerateResponse) {
+  constructor(private aHttp: Http, private generateResponse: GenerateResponse, private aHunger: Hunger, private aFatigue: Fatigue) {
     this.http = aHttp;
     this.genResponse = generateResponse;
+    this.hungerService = aHunger;
+    this.fatigueService = aFatigue;
   }
   
   public sigmoid (x) {
@@ -133,8 +140,9 @@ export class Cognition {
   
   public getUpdates() {
     this.numCycles++;
-    this.hunger += Math.exp(-this.hungerWt) /(this.hunger + this.hungerWt);
-    this.fatigue += Math.exp(-this.fatigueWt) / (this.fatigue + this.fatigueWt);
+    this.nourishment = this.hungerService.adjustHungerLevel() / 100;
+    this.hunger = (((1 / this.nourishment) * 10000) * 10) - 200;
+    this.fatigue = this.fatigueService.adjustFatigue();
     this.wellness += Math.exp(-this.wellnessWt) / (this.wellness + this.wellnessWt);
     this.arousal += Math.exp(-this.arousalWt) / (this.arousal + this.arousalWt);
     const avg = (this.hunger + this.fatigue + this.wellness + this.arousal) / 4;
@@ -144,6 +152,7 @@ export class Cognition {
   
   public getStats() {
     return {
+      nourishment: this.nourishment,
       hunger: this.hunger,
       fatigue: this.fatigue,
       wellness: this.wellness,

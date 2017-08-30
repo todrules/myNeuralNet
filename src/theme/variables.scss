@@ -1,6 +1,6 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
-@import url('https://fonts.googleapis.com/css?family=Iceland|Overpass+Mono|Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono');
 // Font path is used to include ionicons,
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
@@ -440,46 +440,52 @@ button {
   margin-top: 1.6rem;
 }
 
+.game-text-primary {
+  color: map_get(map_get($colors, primary), base);
+  font-size: 14px;
+  margin: 4px;
+}
+
 .game-text-light {
   color: map_get(map_get($colors, light), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 }
 
 .game-text-secondary {
   color: map_get(map_get($colors, secondary), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 
 }
 
 .game-text-success {
   color: map_get(map_get($colors, success), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 }
 
 .game-text-danger {
   color: map_get(map_get($colors, danger), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 }
 
 .game-text-sage {
   color: map_get(map_get($colors, sage), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 }
 
 .game-text-grass {
   color: map_get(map_get($colors, grass), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 }
 
 .game-text-merlot {
   color: map_get(map_get($colors, merlot), base);
-  font-size: 18px;
+  font-size: 14px;
   margin: 4px;
 }
 

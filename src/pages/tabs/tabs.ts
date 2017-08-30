@@ -9,8 +9,8 @@ import { GamePage } from '../game/game';
 })
 export class TabsPage {
 
-  tab1Root = DeepPage;
-  tab2Root = ChatterBot;
+  tab1Root = ChatterBot;
+  tab2Root = DeepPage;
   tab3Root = GamePage;
 
   constructor() {

@@ -1,54 +1,143 @@
 <div style="width: 100%; height: 100%; position: absolute; top: 0; right: 0; left: 0; z-index: 100; pointer-events: none;">
-  <div fxLayout="row" fxLayoutAlign="start start" style="width: 100%; margin-left: 40px; margin-top: 40px;">
-    <div fxLayout="column" fxLayoutAlign="center start">
-      <div fxLayout="row" fxLayoutAlign="start center">
+  <div style="width: 100%; height: 100%;" fxLayout="row" fxLayoutAlign="space-between stretch">
+    <div style="width: 33%; height: 100%;" fxLayout="column" fxLayoutAlign="start start">
+      <div fxLayout="row" fxLayoutAlign="start start" style="margin-left: 40px; margin-top: 40px;">
+        <div fxLayout="column" fxLayoutAlign="center start" style="background-color: rgba(0,0,0,0.8); padding: 10px; min-width: 300px;">
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <div fxLayout="column" fxLayoutAlign="start start">
+              <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">Total Punish: {{totalpunish}} </span>
+              <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">Total Reward: {{totalreward}} </span>
+              <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">Current Punish: {{punishamount}} </span>
+              <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">Current Reward: {{rewardamount}} </span>
+              <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%;" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start start" fxFlex="70">
+                  <span class="game-text-secondary" style="font-family: 'Overpass Mono', monospace;">
+                    Nourishment:&nbsp;<span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">{{systemstate?.nourishment | number:'1.0-2'}}</span>
+                  </span>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%;" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start start" fxFlex="70">
+                  <span class="game-text-secondary" style="font-family: 'Overpass Mono', monospace;">
+                    Hunger: <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">{{systemstate?.hunger | number:'1.0-3'}}</span>
+                  </span>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="end start" fxFlex="30">
+                  <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">
+                    <span class="game-text-success">Act:</span>&nbsp;{{systemstate?.hungerAct | number:'1.0-3'}}</span>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%;" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start start" fxFlex="70">
+                  <span class="game-text-secondary" style="font-family: 'Overpass Mono', monospace;">
+                    Fatigue: <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">{{systemstate?.fatigue | number:'1.0-2'}}</span>
+                  </span>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="end start" fxFlex="30">
+                  <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">
+                    <span class="game-text-success">Act:</span>&nbsp;{{systemstate?.fatigueAct | number:'1.0-3'}}</span>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%;" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start start" fxFlex="70">
+                  <span class="game-text-secondary" style="font-family: 'Overpass Mono', monospace;">
+                    Wellness: <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">{{systemstate?.wellness | number:'1.0-2'}}</span>
+                  </span>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="end start" fxFlex="30">
+                  <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">
+                    <span class="game-text-success">Act:</span>&nbsp;{{systemstate?.wellnessAct | number:'1.0-3'}}</span>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%;" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start start" fxFlex="70">
+                  <span class="game-text-secondary" style="font-family: 'Overpass Mono', monospace;">
+                    Arousal: <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">{{systemstate?.arousal | number:'1.0-2'}}</span>
+                  </span>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="end start" fxFlex="30">
+                  <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">
+                    <span class="game-text-success">Act:</span>&nbsp;{{systemstate?.arousalAct | number:'1.0-3'}}</span>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between start" style="width: 100%;" fxFlex="100">
+                <div fxLayout="column" fxLayoutAlign="start start" fxFlex="70">
+                  <span class="game-text-secondary" style="font-family: 'Overpass Mono', monospace;">
+                    Contentment: <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">{{systemstate?.contentment | number:'1.0-2'}}</span>
+                  </span>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="end start" fxFlex="30">
+                  <span class="game-text-light" style="font-family: 'Overpass Mono', monospace;">
+                    <span class="game-text-success">Act:</span>&nbsp;{{systemstate?.contentAct | number:'1.0-3'}}</span>
+                </div>
+              </div>
 
-        <button ion-button ion-icon color="grass" [disabled]="!stop" (click)="playGame()">
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start start" style="margin-left: 20px;">
+
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start start">
+
+            </div>
+          </div>
+          <div style="margin-top: 40px;">
+            <span class="game-text-secondary" style="margin-top: 40px; font-family: 'Overpass Mono', monospace;">Diagnostics:</span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start start">
+            <div fxLayoutAlign="start start" fxLayout="column">
+              <div *ngFor="let item of diagArray" style="font-family: 'Overpass Mono', monospace; width: 100%; max-width: 300px; font-size: 1em;" #dxdiag id="dxdiag"
+                class="game-text-success">
+                {{item}}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 33%; height: 100%;" fxLayout="column" fxLayoutAlign="start center">
+      <div fxLayout="row" fxLayoutAlign="start center" style="padding-top: 40px;">
+
+        <button ion-button ion-icon id="playbtn" color="grass" style="z-index: 100;" [disabled]="!stop" (click)="playGame()">
           <ion-icon name="play"></ion-icon> &nbsp;&nbsp;Play
         </button>
 
-        <button ion-button ion-icon style="margin-left: 20px;" color="success" [disabled]="stop" (click)="stopGame()">
+        <button ion-button id="pausebtn" ion-icon style="margin-left: 20px; z-index: 100;" color="success" [disabled]="stop" (click)="stopGame()">
           <ion-icon name="pause"></ion-icon> &nbsp;&nbsp;Pause
         </button>
 
       </div>
-      <div fxLayout="row" fxLayoutAlign="start start">
-        <div fxLayout="column" fxLayoutAlign="start start">
-          <span class="game-text-light" style="text-decoration: underline;">States</span>
-          <span class="game-text-light">Hunger:  </span>
-          <span class="game-text-light">Fatigue:  </span>
-          <span class="game-text-light">Wellness:  </span>
-          <span class="game-text-light">Arousal:  </span>
-          <span class="game-text-light">Contentment:  </span>
+      <div fxLayout="row" fxLayoutAlign="center center" style="padding-top: 200px;">
+        <div fxLayoutAlign="center center" fxLayout="column">
+          <div style="width: 100%; max-width: 500px; max-height: 200px; height: 100%; background-color: rgba(0,0,0,0.8); min-height: 150px; min-width: 300px; color: #FDFFFC; font-size: 20px; font-family: 'Overpass Mono', monospace; padding: 12px;"
+            id="myinput" #myinput></div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+
+            <button ion-button color="grass" style="z-index: 100;" #rewardbtn id="rewardbtn" (click)="reward()">
+              Reward
+            </button>
+
+            <button ion-button style="margin-left: 20px; z-index: 100;" #punishbtn id="punishbtn" color="danger" (click)="punish()">
+              Punish
+            </button>
+
+          </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start start" style="margin-left: 20px;">
-          <span class="game-text-light" style="text-decoration: underline;">Raw</span>
-          <span class="game-text-grass">{{systemstate?.hunger | number:'1.0-3'}}</span>
-          <span class="game-text-merlot">{{systemstate?.fatigue | number:'1.0-3'}}</span>
-          <span class="game-text-light">{{systemstate?.wellness | number:'1.0-3'}} </span>
-          <span class="game-text-light">{{systemstate?.arousal | number:'1.0-3'}} </span>
-          <span class="game-text-light">{{systemstate?.contentment | number:'1.0-3'}} </span>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="start start">
-          <span class="game-text-light" style="text-decoration: underline;">Activation</span>
-          <span class="game-text-light">{{systemstate?.hungerAct | number:'1.0-3'}} </span>
-          <span class="game-text-light">{{systemstate?.fatigueAct | number:'1.0-3'}} </span>
-          <span class="game-text-light">{{systemstate?.wellnessAct | number:'1.0-3'}} </span>
-          <span class="game-text-light">{{systemstate?.arousalAct | number:'1.0-3'}} </span>
-          <span class="game-text-light">{{systemstate?.contentAct | number:'1.0-3'}} </span>
-        </div>
+
       </div>
     </div>
+    <div style="width: 33%; height: 100%;" fxLayout="column" fxLayoutAlign="start end">
+
+    </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="center start">
-    <div style="width: 100%; max-width: 500px; max-height: 200px; height: 100%; background-color: rgba(0,0,0,0.8); min-height: 150px; min-width: 300px; color: #FDFFFC; font-size: 20px; font-family: 'Overpass Mono', monospace; padding: 12px;" id="myinput" #myinput></div>
-  </div>
+
+
 </div>
 <div style="width: 100%; height: 100%;" class="invis-scroll" fxLayout="column" fxLayoutAlign="start center">
   <div style="width: 100%; height: 100%;" fxLayout="row" fxLayoutAlign="center start" class="invis-scroll">
     <div fxLayout="column" fxLayoutAlign="start center">
 
-      <bot-anima style="width: 100%; height: 100%;">
+      <bot-anima style="width: 100%; height: 100%;" [bright]="bright" [blobamount]="blobamt" [energyscale]="energy" [numparticles]="particles">
 
       </bot-anima>
 
